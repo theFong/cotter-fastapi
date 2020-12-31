@@ -1,8 +1,12 @@
+import os
 from fastapi.param_functions import Depends
 from fastapi.security.oauth2 import OAuth2AuthorizationCodeBearer
 import fastapi
 
-api_key = "***********"
+api_key = os.getenv("COTTER_API_KEY")
+if api_key is None:
+    raise RuntimeError("COTTER_API_KEY env var not set")
+
 oauth_config = {
     "additionalQueryStringParams": {
         "type": "EMAIL",
@@ -22,6 +26,6 @@ auth_code = OAuth2AuthorizationCodeBearer(
 
 
 @app.get("/hello")
-def hello_main(token: str = Depends(auth_code)):
+def hello(token: str = Depends(auth_code)):
     print(token)
     return "hello"
