@@ -1,7 +1,5 @@
-
 from fastapi.param_functions import Depends
 from fastapi.security.oauth2 import OAuth2AuthorizationCodeBearer
-import uvicorn
 import fastapi
 
 api_key = "***********"
