@@ -11,6 +11,7 @@ oauth_config = {
     "additionalQueryStringParams": {
         "type": "EMAIL",
         "api_key": api_key,
+        "redirect_url": "http://localhost:8000/docs/oauth2-redirect"
     },
     "usePkceWithAuthorizationCodeGrant": True,  # PKCE
     "clientId": api_key,
